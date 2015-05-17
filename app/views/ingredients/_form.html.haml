@@ -1,5 +1,5 @@
 = simple_form_for([@recipe, @recipe.ingredients.build]) do |f|
-  = f.input :product_id, :collection => Product.all, :id_method => :id
+  = f.input :product_id, :collection => Product.all.order("name"), :id_method => :id
   = f.input :weight
   %br/
 
