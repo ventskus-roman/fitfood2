@@ -2,6 +2,13 @@
   %p= @recipe.name
   %p= @recipe.description
 
+#ingredients
+  %h2 Ингредиенты
+  = render @recipe.ingredients
+
+  %h3 Добавить ингредиент
+  = render 'ingredients/form'
+
 = link_to "Назад", root_path
 = link_to "Редактировать", edit_recipe_path(@recipe)
 = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }

@@ -1,12 +1,17 @@
 !!!
 %html
   %head
-    %title
-      Fitfood2
+    %title FitFood
     = stylesheet_link_tag :application, :media => 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     %body
+      %nav.navbar.navbar-default
+        .container
+          .navbar-header
+            = link_to "Фитнес-рецепты", root_path, class: "navbar-brand"
+          .nav.navbar-nav.navbar-right
+            = link_to "Добавить рецепт", new_recipe_path, class: "navbar navbar-link"
       .container
         = yield
 
