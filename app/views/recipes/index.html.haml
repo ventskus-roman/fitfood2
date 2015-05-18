@@ -6,6 +6,7 @@
           %hr
           %h2.intro-text.text-center= link_to recipe.name, recipe
           %hr
-          %img.img-responsive.img-border.img-left(src="assets/intro-pic.jpg")
+          - if recipe.image.exists?
+            = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
           %hr.visible-xs
           %p= recipe.description

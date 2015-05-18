@@ -4,6 +4,8 @@
       .col-lg-12
         %p Название:
         %h2= @recipe.name
+        - if @recipe.image.exists?
+          = image_tag @recipe.image.url(:large)
         .row
           .col-md-1
             %p Калории:

@@ -1,6 +1,6 @@
 = simple_form_for([@recipe, @recipe.ingredients.build]) do |f|
-  = f.input :product_id, :collection => Product.all.order("name"), :id_method => :id
-  = f.input :weight
+  = f.input :product_id, :collection => Product.all.order("name"), :id_method => :id, label: "Продукт"
+  = f.input :weight, label: "Вес, г"
   %br/
 
-  = f.button :submit
+  = f.button :submit, label: "Добавить"
