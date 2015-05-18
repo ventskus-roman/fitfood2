@@ -1,2 +1,3 @@
 %p= ingredient.product.name
 %p= ingredient.weight
+%p= "Белки: #{ingredient.product.proteins * ingredient.weight / 100}, Углеводы: #{ingredient.product.carbs * ingredient.weight / 100}, Жиры: #{ingredient.product.fat * ingredient.weight / 100}"

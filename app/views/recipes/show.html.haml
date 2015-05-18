@@ -1,6 +1,18 @@
 #recipe
-  %p= @recipe.name
-  %p= @recipe.description
+  %p Название:
+  %h2= @recipe.name
+  %p Калории:
+  %h3= @recipe.calories
+  %p Белки:
+  %h3= @recipe.proteins
+  %p Углеводы:
+  %h3= @recipe.carbs
+  %p Жиры:
+  %h3= @recipe.fat
+  %p Вес, г:
+  %h3= @recipe.weight
+  %p Описание:
+  %h3= @recipe.description
 
 #ingredients
   %h2 Ингредиенты

@@ -22,13 +22,8 @@ html {
 }
 
 body {
-
-  background: -webkit-linear-gradient(90deg, #556270 10%, #FF6B6B 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #556270 10%, #FF6B6B 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #556270 10%, #FF6B6B 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #556270 10%, #FF6B6B 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #556270 10%, #FF6B6B 90%); /* W3C */
-        
+/*   background-image: url("background.png");
+  background-repeat: repeat-x, repeat; */
 }
 
 .navbar-default {
@@ -39,7 +34,7 @@ body {
   border-radius: 0;
   .navbar-header {
     .navbar-brand {
-      color: white;
+/*       color: black; */
       font-size: 20px;
       text-transform: uppercase;
       font-weight: 700;
@@ -47,7 +42,7 @@ body {
     }
   }
   a.navbar-link {
-    color: rgb(48, 181, 199);
+/*     color: black; */
   }
 }
 
@@ -56,11 +51,20 @@ body {
     margin-bottom: 0;
     font-weight: 100;
     a {
-      color: white;
+/*       color: white; */
     }
   }
   h3 {
     margin: 0;
     font-size: 18px;
+  }
+}
+
+#recipe {
+  h2, h3 {
+    margin-top: 0;
+  }
+  p {
+    margin-bottom: 0;
   }
 }
