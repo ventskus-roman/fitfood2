@@ -1,4 +1,11 @@
 #index_recipes
   - @recipes.each do |recipe|
-    %h2= link_to recipe.name, recipe
-    %h3= recipe.description
+    .row
+      .box
+        .col-lg-12
+          %hr
+          %h2.intro-text.text-center= link_to recipe.name, recipe
+          %hr
+          %img.img-responsive.img-border.img-left(src="assets/intro-pic.jpg")
+          %hr.visible-xs
+          %p= recipe.description

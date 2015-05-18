@@ -1,34 +1,37 @@
 #recipe
-  %p Название:
-  %h2= @recipe.name
   .row
-    .col-md-1
-      %p Калории:
-      %h3= @recipe.calories
-    .col-md-1
-      %p Белки:
-      %h3= @recipe.proteins
-    .col-md-1
-      %p Углеводы:
-      %h3= @recipe.carbs
-    .col-md-1
-      %p Жиры:
-      %h3= @recipe.fat
-    .col-md-1
-      %p Вес, г:
-      %h3= @recipe.weight
-  %p Описание:
-  %h3= @recipe.description
-  %hr/
+    .box
+      .col-lg-12
+        %p Название:
+        %h2= @recipe.name
+        .row
+          .col-md-1
+            %p Калории:
+            %h3= @recipe.calories
+          .col-md-1
+            %p Белки:
+            %h3= @recipe.proteins
+          .col-md-1
+            %p Углеводы:
+            %h3= @recipe.carbs
+          .col-md-1
+            %p Жиры:
+            %h3= @recipe.fat
+          .col-md-1
+            %p Вес, г:
+            %h3= @recipe.weight
+        %p Описание:
+        %h3= @recipe.description
+        %hr/
 
-  #ingredients
-    %p Ингредиенты:
-    = render @recipe.ingredients
-    %br/
+        #ingredients
+          %p Ингредиенты:
+          = render @recipe.ingredients
+          %br/
 
-    %h3 Добавить ингредиент
-    = render 'ingredients/form'
+          %h3 Добавить ингредиент
+          = render 'ingredients/form'
 
-  = link_to "Назад", root_path
-  = link_to "Редактировать", edit_recipe_path(@recipe)
-  = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }
+        = link_to "Назад", root_path
+        = link_to "Редактировать", edit_recipe_path(@recipe)
+        = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }

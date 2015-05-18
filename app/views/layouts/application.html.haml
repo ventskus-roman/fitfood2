@@ -5,13 +5,26 @@
     = stylesheet_link_tag :application, :media => 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
     %body
+      .brand Fit & Food
+      .address-bar Вкусные и полезные рецепты
       %nav.navbar.navbar-default
         .container
           .navbar-header
-            = link_to "Фитнес-рецепты", root_path, class: "navbar-brand"
-          .nav.navbar-nav.navbar-right
-            = link_to "Добавить рецепт", new_recipe_path, class: "navbar navbar-link"
+            %button.navbar-toggle
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to "Фитнес рецепты", root_path, class: "navbar-brand"
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li
+                = link_to "Все рецепты", root_path
+              %li
+                = link_to "Добавить рецепт", new_recipe_path
       .container
         = yield
 
