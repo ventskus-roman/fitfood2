@@ -1,3 +1,14 @@
-%p= ingredient.product.name
-%p= ingredient.weight
-%p= "Белки: #{ingredient.product.proteins * ingredient.weight / 100}, Углеводы: #{ingredient.product.carbs * ingredient.weight / 100}, Жиры: #{ingredient.product.fat * ingredient.weight / 100}"
+%h2= ingredient.product.name
+.row
+  .col-md-1
+    %p Белки:
+    %h3= ingredient.product.proteins * ingredient.weight / 100
+  .col-md-1
+    %p Углеводы:
+    %h3= ingredient.product.carbs * ingredient.weight / 100
+  .col-md-1
+    %p Жиры:
+    %h3= ingredient.product.fat * ingredient.weight / 100
+  .col-md-1
+    %p Вес, г:
+    %h3= ingredient.weight
