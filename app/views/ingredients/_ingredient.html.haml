@@ -2,14 +2,14 @@
 .row
   .col-md-1
     %p Белки:
-    %h3= ingredient.product.proteins * ingredient.weight / 100
+    %h3= (ingredient.product.proteins * ingredient.weight / 100).round
   .col-md-1
     %p Углеводы:
-    %h3= ingredient.product.carbs * ingredient.weight / 100
+    %h3= (ingredient.product.carbs * ingredient.weight / 100).round
   .col-md-1
     %p Жиры:
-    %h3= ingredient.product.fat * ingredient.weight / 100
+    %h3= (ingredient.product.fat * ingredient.weight / 100).round
   .col-md-1
     %p Вес, г:
-    %h3= ingredient.weight
+    %h3= ingredient.weight.round
 %hr

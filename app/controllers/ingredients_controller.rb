@@ -12,10 +12,13 @@ class IngredientsController < ApplicationController
                                 fat: product_params[:product_fat])
       if (@product.save)
         @ingredient = @recipe.ingredients.create(product_id: @product.id, weight: product_params[:weight])
+        redirect_to recipe_path(@recipe)
       else
         flash.now[:error] = "Не удалось добавить продукт"
         render '/recipes/show'
       end
     end
+    @recipe.save
   end
+
 end
