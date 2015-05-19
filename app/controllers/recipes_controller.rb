@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 
+  autocomplete :product, :name, :extra_data => [:proteins, :carbs, :fat]
+
   def index
     @recipes = Recipe.all.order("created_at DESC")
   end
