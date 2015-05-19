@@ -1,6 +1,9 @@
 = simple_form_for([@recipe, @recipe.ingredients.build]) do |f|
   = f.input :product_id, as: :hidden, input_html: {id: "product_id"}
-  = f.input :product_name, :url => autocomplete_product_name_recipes_path, :as => :autocomplete, :id_element =>"#product_id", :label => "Продукт", input_html: { class: 'form-control' }
+  = f.input :product_name, :url => autocomplete_product_name_recipes_path, :as => :autocomplete, :id_element =>"#product_id", :label => "Продукт", input_html: { class: 'form-control' }, update_elements: {proteins: "#product_proteins", carbs: "#product_carbs", fat: "#product_fat"}
+  = f.input :product_proteins, input_html: {id: "product_proteins"}
+  = f.input :product_carbs, input_html: {id: "product_carbs"}
+  = f.input :product_fat, input_html: {id: "product_fat"}
   = f.input :weight, label: "Вес, г"
   %br/
 

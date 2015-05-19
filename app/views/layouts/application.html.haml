@@ -8,6 +8,12 @@
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
     %body
+      - if notice
+        #notice_wrapper
+          %p.notice= notice
+      - elsif flash.now[:error]
+        #alert_wrapper
+          %p.alert= flash.now[:error]
       .brand Fit & Food
       .address-bar Вкусные и полезные рецепты
       %nav.navbar.navbar-default
@@ -27,4 +33,3 @@
                 = link_to "Добавить рецепт", new_recipe_path
       .container
         = yield
-

@@ -17,3 +17,11 @@
 //= require bootstrap-sprockets
 //= require autocomplete-rails
 //= require jquery-ui
+
+$(document).ready(function() {
+  setTimeout(function() {
+    $('#notice_wrapper').fadeOut(function() {
+      $(this).remove();
+    })
+  }, 4500);
+})
