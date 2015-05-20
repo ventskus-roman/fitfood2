@@ -11,4 +11,4 @@
           - if recipe.image.exists?
             = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
           %hr.visible-xs
-          %p= recipe.description
+          %p= raw recipe.description

@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require autocomplete-rails
 //= require jquery-ui
+//= require ckeditor-jquery
 
 $(document).ready(function() {
   setTimeout(function() {
@@ -24,4 +25,17 @@ $(document).ready(function() {
       $(this).remove();
     })
   }, 4500);
+
+  setTimeout(function() {
+    $('.ckeditor').ckeditor({
+    // optional config
+    });
+  }, 500);
 })
+
+$(document).on('page:update', function(){
+    console.log('page updated');
+    if ($('.ckeditor')[0]) {
+        CKEDITOR.replace($('.ckeditor').attr('id'));
+    }
+});

@@ -23,7 +23,7 @@
             %p Вес, г:
             %h3= @recipe.weight
         %p Описание:
-        %h3= @recipe.description
+        %h3= raw @recipe.description
         %p Добавлено:
         = link_to @recipe.user.email, user_recipes_path(@recipe.user)
         %p= @recipe.created_at
