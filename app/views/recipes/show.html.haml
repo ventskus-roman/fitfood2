@@ -25,7 +25,7 @@
         %p Описание:
         %h3= @recipe.description
         %p Добавлено:
-        %strong= @recipe.user.email
+        = link_to @recipe.user.email, user_recipes_path(@recipe.user)
         %p= @recipe.created_at
         %hr/
 
