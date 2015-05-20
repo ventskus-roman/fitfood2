@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root "recipes#index"
   resources :users do
     get :recipes
+    get :subscribe
+    get :unsubscribe
+    get :news
   end
   resources :recipes do
     resources :ingredients

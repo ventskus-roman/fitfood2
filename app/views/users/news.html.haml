@@ -1,12 +1,3 @@
-.row
-  .box
-    .col-md-4.col-md-offset-4.center
-      %p= @user.email
-      - if current_user != @user
-        - if current_user.users.include?(@user)
-          = link_to "Отписаться", user_unsubscribe_path(@user)
-        - else
-          = link_to "Подписаться", user_subscribe_path(@user)
 #index_recipes
   - @recipes.each do |recipe|
     .row

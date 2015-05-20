@@ -31,6 +31,10 @@
                 = link_to "Все рецепты", root_path
               - if user_signed_in?
                 %li
+                  = link_to "Мои", user_recipes_path(current_user)
+                %li
+                  = link_to "Лента", user_news_path(current_user)
+                %li
                   = link_to "Добавить рецепт", new_recipe_path
             %p.navbar-text.pull-right
               - if user_signed_in?
