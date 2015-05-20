@@ -1,6 +1,7 @@
 class Recipe < ActiveRecord::Base
   has_many :ingredients
   has_many :products, :through => :ingredients
+  belongs_to :user
   validates :name, presence: { message: "не может быть пустым" }
   accepts_nested_attributes_for :ingredients, :reject_if => :all_blank, :allow_destroy => true
   attr_accessor :weight
@@ -37,4 +38,7 @@ class Recipe < ActiveRecord::Base
     _calories = _proteins * 4 + _carbs * 4 + _fat * 9
     _calories
   end
+
+  private
+
 end

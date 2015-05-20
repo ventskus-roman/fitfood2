@@ -24,16 +24,19 @@
             %h3= @recipe.weight
         %p Описание:
         %h3= @recipe.description
+        %p Добавлено:
+        %strong= @recipe.user.email
+        %p= @recipe.created_at
         %hr/
 
         #ingredients
           %p Ингредиенты:
           = render @recipe.ingredients
           %br/
-          - if user_signed_in?
+          - if user_signed_in? && current_user.id == @recipe.user.id
             %h3 Добавить ингредиент
             = render 'ingredients/form'
-        - if user_signed_in?
-          = link_to "Назад", root_path
+        = link_to "Назад", root_path
+        - if user_signed_in? && current_user.id == @recipe.user.id
           = link_to "Редактировать", edit_recipe_path(@recipe)
           = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }
