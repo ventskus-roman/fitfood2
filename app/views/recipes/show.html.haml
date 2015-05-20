@@ -30,10 +30,10 @@
           %p Ингредиенты:
           = render @recipe.ingredients
           %br/
-
-          %h3 Добавить ингредиент
-          = render 'ingredients/form'
-
-        = link_to "Назад", root_path
-        = link_to "Редактировать", edit_recipe_path(@recipe)
-        = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }
+          - if user_signed_in?
+            %h3 Добавить ингредиент
+            = render 'ingredients/form'
+        - if user_signed_in?
+          = link_to "Назад", root_path
+          = link_to "Редактировать", edit_recipe_path(@recipe)
+          = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }

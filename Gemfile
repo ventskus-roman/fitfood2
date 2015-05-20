@@ -24,3 +24,4 @@ gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
 gem 'haml', '~> 4.0.6'
 gem "paperclip", "~> 4.2"
+gem 'devise'

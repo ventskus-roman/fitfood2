@@ -11,9 +11,9 @@
       - if notice
         #notice_wrapper
           %p.notice= notice
-      - elsif flash.now[:error]
+      - elsif alert
         #alert_wrapper
-          %p.alert= flash.now[:error]
+          %p.alert= alert
       .brand Fit & Food
       .address-bar Вкусные и полезные рецепты
       %nav.navbar.navbar-default
@@ -29,7 +29,17 @@
             %ul.nav.navbar-nav
               %li
                 = link_to "Все рецепты", root_path
-              %li
-                = link_to "Добавить рецепт", new_recipe_path
+              - if user_signed_in?
+                %li
+                  = link_to "Добавить рецепт", new_recipe_path
+            %p.navbar-text.pull-right
+              - if user_signed_in?
+                = link_to current_user.email, edit_user_registration_path, class: 'navbar-link'
+                |
+                = link_to 'Выход', destroy_user_session_path, method: :delete, class: 'navbar-link'
+              - else
+                = link_to 'Зарегистрироваться', new_user_registration_path, class: 'navbar-link'
+                |
+                = link_to 'Войти', new_user_session_path, class: 'navbar-link'
       .container
         = yield
