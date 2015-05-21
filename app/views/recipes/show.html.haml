@@ -25,14 +25,12 @@
         = link_to @recipe.user.email, user_recipes_path(@recipe.user)
         %p= @recipe.created_at
         %hr/
+        - if @recipe.has_ingredients
+          #ingredients
+            %p Ингредиенты:
+            = render @recipe.ingredients
+            %br/
 
-        #ingredients
-          %p Ингредиенты:
-          = render @recipe.ingredients
-          %br/
-          - if user_signed_in? && current_user.id == @recipe.user.id
-            %h3 Добавить ингредиент
-            = render 'ingredients/form'
         = link_to "Назад", root_path
         - if user_signed_in? && current_user.id == @recipe.user.id
           = link_to "Редактировать", edit_recipe_path(@recipe)
