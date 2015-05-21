@@ -1,9 +1,9 @@
-#recipe
+.recipe
   .row
     .box
       .col-lg-12
-        %p Название:
-        %h2= @recipe.name
+        .title
+          =@recipe.name
         - if @recipe.image.exists?
           = image_tag @recipe.image.url(:large)
         .row
@@ -20,7 +20,8 @@
             %p Жиры:
             %h3= @recipe.fat
         %p Описание:
-        %h3= raw @recipe.description
+        .recipe-description
+          = raw @recipe.description
         %p Добавлено:
         = link_to @recipe.user.email, user_recipes_path(@recipe.user)
         %p= @recipe.created_at

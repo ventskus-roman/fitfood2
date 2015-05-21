@@ -3,12 +3,14 @@
     .row
       .box
         .col-lg-12
-          %hr
-          %h2.intro-text.text-center= link_to recipe.name, recipe
-          %p.text-center
-            = "#{recipe.proteins} / #{recipe.fat} / #{recipe.carbs}"
-          %hr
-          - if recipe.image.exists?
-            = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
-          %hr.visible-xs
-          %p= recipe.description
+          .recipe
+            %hr
+            .title
+              = link_to recipe.name, recipe
+            %p.text-center
+              = "#{recipe.proteins} / #{recipe.fat} / #{recipe.carbs}"
+            %hr
+            - if recipe.image.exists?
+              = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
+            %hr.visible-xs
+            %p= recipe.description

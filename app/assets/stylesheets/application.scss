@@ -64,3 +64,15 @@
 .center {
   text-align: center;
 }
+
+.recipe {
+  .title {
+    text-align: center;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 3em;
+    a {
+      color: black;
+    }
+  }
+}
