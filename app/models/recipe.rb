@@ -7,27 +7,41 @@ class Recipe < ActiveRecord::Base
   attr_accessor :weight
   has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  before_validation :recalc_calories, on: [:create, :update]
+  before_validation :recalc_calories, :clear_ingredients_if_need, on: [:create, :update, :save]
 
   def recalc_calories
-    if ingredients && ingredients.length > 0
+    if has_ingredients && ingredients && ingredients.length > 0
         self.calories = 0
         self.proteins = 0
         self.carbs = 0
         self.fat = 0
+        total_weight = 0
         ingredients.each do |ingredient|
-          self.proteins = self.proteins + ingredient.product.proteins * ingredient.weight / 100
-          self.carbs = self.carbs + ingredient.product.carbs * ingredient.weight / 100
-          self.fat = self.fat + ingredient.product.fat * ingredient.weight / 100
+          if (ingredient.product)
+            self.proteins = self.proteins + ingredient.product.proteins * ingredient.weight / 100
+            self.carbs = self.carbs + ingredient.product.carbs * ingredient.weight / 100
+            self.fat = self.fat + ingredient.product.fat * ingredient.weight / 100
+            total_weight = total_weight + ingredient.weight;
+          end
         end
-        self.proteins = self.proteins.round
-        self.carbs = self.carbs.round
-        self.fat = self.fat.round
-        self.calories = calc_calories(proteins, carbs, fat).round
+        part = total_weight / 100
+        self.proteins = (self.proteins / part).round
+        self.carbs = (self.carbs / part).round
+        self.fat = (self.fat / part).round
+        self.calories = (calc_calories(proteins, carbs, fat) / part).round
     else
       self.calories = calc_calories(proteins, carbs, fat)
     end
   end
+
+  private
+
+  def clear_ingredients_if_need
+    if has_ingredients == 0 || !has_ingredients
+      self.ingredients.clear
+    end
+  end
+
 
   private
 

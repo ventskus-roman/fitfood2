@@ -31,6 +31,28 @@ $(document).ready(function() {
     // optional config
     });
   }, 500);
+
+  $("#recipe_has_ingredients").change(function() {
+    console.log("changed");
+    showRecipeParametersIfNeed();
+  });
+
+  var showRecipeParametersIfNeed = function() {
+    var checked = $("#recipe_has_ingredients").is(":checked");
+    showRecipeParameters(!checked);
+  }
+
+  var showRecipeParameters = function(show) {
+    var params = $("#recipe_parameters");
+    if (show) {
+      params.show();
+    } else {
+      params.hide();
+    }
+  }
+
+  showRecipeParametersIfNeed();
+
 })
 
 $(document).on('page:update', function(){

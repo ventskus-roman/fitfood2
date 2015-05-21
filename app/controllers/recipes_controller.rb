@@ -8,23 +8,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    proteins = 0
-    carbs = 0
-    fat = 0
-    calories = 0
-    weight = 0
-    @recipe.ingredients.each do |ingredient|
-      proteins = proteins + ingredient.product.proteins * (ingredient.weight / 100)
-      carbs = carbs + ingredient.product.carbs * (ingredient.weight / 100)
-      fat = fat + ingredient.product.fat * (ingredient.weight / 100)
-      weight = weight + ingredient.weight
-    end
-    calories = proteins * 4 + carbs * 4 + fat * 9
-    @recipe.calories = calories.round.to_i
-    @recipe.proteins = proteins.round.to_i
-    @recipe.carbs = carbs.round.to_i
-    @recipe.fat = fat.round.to_i
-    @recipe.weight = weight.round
   end
 
   def new
@@ -66,7 +49,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :proteins, :carbs, :fat, :description, :image)
+    params.require(:recipe).permit(:name, :proteins, :carbs, :fat, :description, :image, :has_ingredients)
   end
 
 end
