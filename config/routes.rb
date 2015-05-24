@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :ingredients
     get :autocomplete_product_name, :on => :collection
+    member { post :vote }
   end
 end

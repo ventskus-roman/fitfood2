@@ -31,7 +31,10 @@
             %p Ингредиенты:
             = render @recipe.ingredients
             %br/
-
+        %p= pluralize @recipe.reputation_for(:votes).to_i, "vote"
+        = link_to "Нравится", vote_recipe_path(@recipe, type: "up"), method: "post"
+        = link_to "Не нравится", vote_recipe_path(@recipe, type: "down"), method: "post"
+        %br/
         = link_to "Назад", root_path
         - if user_signed_in? && current_user.id == @recipe.user.id
           = link_to "Редактировать", edit_recipe_path(@recipe)

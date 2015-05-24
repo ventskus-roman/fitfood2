@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :find_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :find_recipe, only: [:show, :edit, :update, :destroy, :vote]
 
   autocomplete :product, :name, :extra_data => [:proteins, :carbs, :fat]
 
@@ -38,6 +38,12 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     redirect_to root_path
+  end
+
+  def vote
+    value = params[:type] == 'up' ? 1 : -1
+    @recipe.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Спасибо за ваш голос"
   end
 
   private

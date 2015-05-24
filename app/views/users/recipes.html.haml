@@ -1,25 +1,10 @@
 .row
   .box
     .col-md-4.col-md-offset-4.center
-      %p= @user.email
+      %p= "#{@user.email} (#{@user.reputation_for(:votes).to_i})"
       - if current_user != @user
         - if current_user.users.include?(@user)
           = link_to "Отписаться", user_unsubscribe_path(@user)
         - else
           = link_to "Подписаться", user_subscribe_path(@user)
-#index_recipes
-  - @recipes.each do |recipe|
-    .row
-      .box
-        .col-lg-12
-          .recipe
-            %hr
-            .title
-              = link_to recipe.name, recipe
-            %p.text-center
-              = "#{recipe.proteins} / #{recipe.fat} / #{recipe.carbs}"
-            %hr
-            - if recipe.image.exists?
-              = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
-            %hr.visible-xs
-            %p= recipe.description
+= render 'recipes/recipes', recipes: @recipes

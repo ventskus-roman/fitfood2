@@ -26,3 +26,4 @@ gem 'haml', '~> 4.0.6'
 gem "paperclip", "~> 4.2"
 gem 'devise'
 gem 'ckeditor_rails'
+gem 'activerecord-reputation-system'

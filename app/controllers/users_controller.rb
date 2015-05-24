@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def news
-    @recipes = Recipe.where(user: current_user.users)
+    @recipes = Recipe.where(user: current_user.users).order("created_at desc")
   end
 
   private
