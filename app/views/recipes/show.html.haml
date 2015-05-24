@@ -34,7 +34,7 @@
         %br/
         #disqus_thread
 :javascript
-  var disqus_identifier = #{@recipe.id};
+  var disqus_identifier = "recipe_#{@recipe.id}";
   var disqus_url = 'http://example.com/recipes/#{@recipe.id}';
   var disqus_shortname = 'fitfood';
   (function() {
