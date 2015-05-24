@@ -14,15 +14,10 @@ group :development, :test do
   gem 'spring'
 end
 
-group :development do
-  gem 'rvm-capistrano'
-  gem 'capistrano'
-end
-
 group :production do
-  gem 'mysql'
+  gem 'mysql2'
   gem 'rails_12factor'
-  gem 'unicorn'
+  gem 'thin'
 end
 
 gem 'bootstrap-sass'

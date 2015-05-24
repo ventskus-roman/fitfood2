@@ -20,6 +20,13 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter:  mysql2
+  encoding: utf8
+  database: rails
+  username: rails
+  password: h6maEdPTwl
