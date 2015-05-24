@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def recipes
-    @recipes = Recipe.where(user_id: params[:user_id])
+    @recipes = Recipe.where(user_id: params[:user_id]).paginate(:page => params[:page], per_page: 5).order("created_at DESC")
   end
 
   def subscribe
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def news
-    @recipes = Recipe.where(user: current_user.users).order("created_at desc")
+    @recipes = Recipe.where(user: current_user.users).paginate(:page => params[:page], per_page: 5).order("created_at DESC")
   end
 
   private

@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   autocomplete :product, :name, :extra_data => [:proteins, :carbs, :fat]
 
   def index
-    @recipes = Recipe.all.order("created_at DESC")
+    @recipes = Recipe.paginate(:page => params[:page], per_page: 5).order("created_at DESC")
   end
 
   def show

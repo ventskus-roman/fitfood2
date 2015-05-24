@@ -27,3 +27,4 @@ gem "paperclip", "~> 4.2"
 gem 'devise'
 gem 'ckeditor_rails'
 gem 'activerecord-reputation-system'
+gem 'will_paginate', '~> 3.0.6'

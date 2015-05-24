@@ -14,3 +14,8 @@
               = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
             %hr.visible-xs
             %p= raw recipe.description
+  .row
+    .box
+      .col-lg-12
+        .pagination-box
+          = will_paginate recipes, :previous_label => 'Предыдущая', :next_label => 'Следующая'
