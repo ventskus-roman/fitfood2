@@ -15,6 +15,6 @@ doc.css("tr").each_with_index do |tr, index|
   proteins = tds[1].content ? tds[1].content.to_f : 0
   fat = tds[2].content ? tds[2].content.to_f : 0
   carbs = tds[3].content ? tds[3].content.to_f : 0
-  Product.create(name: name.to_s, proteins: proteins, fat: fat, carbs: carbs)
+  Product.create(name: name.mb_chars, proteins: proteins, fat: fat, carbs: carbs)
 end
 
