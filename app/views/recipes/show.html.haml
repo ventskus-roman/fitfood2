@@ -7,18 +7,11 @@
         - if @recipe.image.exists?
           = image_tag @recipe.image.url(:large)
         .row
-          .col-md-1
-            %p Калории:
-            %h3= @recipe.calories
-          .col-md-1
-            %p Белки:
-            %h3= @recipe.proteins
-          .col-md-1
-            %p Углеводы:
-            %h3= @recipe.carbs
-          .col-md-1
-            %p Жиры:
-            %h3= @recipe.fat
+          .col-md-12
+            %p.text-center
+              = "Белки: #{@recipe.proteins} / Жиры: #{@recipe.fat} / Углеводы: #{@recipe.carbs}"
+              %br/
+              = "Калории: #{@recipe.calories}"
         %p Описание:
         .recipe-description
           = raw @recipe.description
@@ -39,3 +32,10 @@
         - if user_signed_in? && current_user.id == @recipe.user.id
           = link_to "Редактировать", edit_recipe_path(@recipe)
           = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }
+        %br/
+        #disqus_thread
+:javascript
+  $(document).ready(function() {
+    window.disqus_no_style = true;
+    $.getScript("http://fitfood.disqus.com/embed.js")
+  })

@@ -9,6 +9,8 @@
               = link_to recipe.name, recipe
             %p.text-center
               = "#{recipe.proteins} / #{recipe.fat} / #{recipe.carbs}"
+              %br/
+              = recipe.calories
             %hr
             - if recipe.image.exists?
               = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
