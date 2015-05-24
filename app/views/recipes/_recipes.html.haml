@@ -15,7 +15,9 @@
             - if recipe.image.exists?
               = image_tag recipe.image.url(:medium), class: "img-responsive img-border img-left"
             %hr.visible-xs
-            %p= raw recipe.description
+            %p= raw recipe.shorten
+            - if recipe.description.length > 300
+              = link_to "Читать полностью", recipe_path(recipe)
   .row
     .box
       .col-lg-12

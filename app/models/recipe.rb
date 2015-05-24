@@ -1,4 +1,8 @@
 class Recipe < ActiveRecord::Base
+  include ActionView::Helpers::UrlHelper
+  include ActionController::UrlFor
+  include Rails.application.routes.url_helpers
+
   has_many :ingredients
   has_many :products, :through => :ingredients
   belongs_to :user
@@ -9,6 +13,7 @@ class Recipe < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   before_validation :recalc_calories, :clear_ingredients_if_need, on: [:create, :update, :save]
   has_reputation :votes, source: :user
+  slice :description, :as => :shorten, :slice => {:maximum => 300,:complete => /\n|\./}
 
   def recalc_calories
     if has_ingredients && ingredients && ingredients.length > 0
