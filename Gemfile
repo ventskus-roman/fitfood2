@@ -13,10 +13,18 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+
+group :development do
+  gem 'rvm-capistrano'
+  gem 'capistrano'
 end
+
+group :production do
+  gem 'mysql'
+  gem 'rails_12factor'
+  gem 'unicorn'
+end
+
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'nokogiri'
