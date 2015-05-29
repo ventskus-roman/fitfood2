@@ -2,38 +2,43 @@
   .row
     .box
       .col-lg-12
-        .title
-          =@recipe.name
-        - if @recipe.image.exists?
-          = image_tag @recipe.image.url(:large)
-        .row
-          .col-md-12
-            %p.text-center
-              = "Белки: #{@recipe.proteins} / Жиры: #{@recipe.fat} / Углеводы: #{@recipe.carbs}"
+        .recipe-block
+          .title
+            =@recipe.name
+          - if @recipe.image.exists?
+            = image_tag @recipe.image.url(:large)
+          .row
+            .col-md-12
+              %p.text-center
+                = "Белки: #{@recipe.proteins} / Жиры: #{@recipe.fat} / Углеводы: #{@recipe.carbs}"
+                %br/
+                = "Калории: #{@recipe.calories}"
+          .recipe-description
+            = raw @recipe.description
+          .created-info.pull-right
+            = link_to @recipe.user.email, user_recipes_path(@recipe.user)
+            %p= @recipe.created_at.strftime("%H:%M %d-%m-%y")
+          - if @recipe.has_ingredients
+            #ingredients
+              %p Ингредиенты:
+              = render @recipe.ingredients
               %br/
-              = "Калории: #{@recipe.calories}"
-        .recipe-description
-          = raw @recipe.description
-        %p Добавлено:
-        = link_to @recipe.user.email, user_recipes_path(@recipe.user)
-        %p= @recipe.created_at
-        %hr/
-        - if @recipe.has_ingredients
-          #ingredients
-            %p Ингредиенты:
-            = render @recipe.ingredients
-            %br/
-        %p= pluralize @recipe.reputation_for(:votes).to_i, "vote"
-        %p Tags:
-        %p= raw @recipe.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
-        = link_to "Нравится", vote_recipe_path(@recipe, type: "up"), method: "post"
-        = link_to "Не нравится", vote_recipe_path(@recipe, type: "down"), method: "post"
+        .reputation
+          %p= "Рейтинг: #{@recipe.reputation_for(:votes).to_i}"
+          = link_to "Нравится", vote_recipe_path(@recipe, type: "up"), method: "post"
+          = link_to "Не нравится", vote_recipe_path(@recipe, type: "down"), method: "post"
+        %br/
+        .tags
+          %p Тэги:
+          %p= raw @recipe.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
         %br/
         = link_to "Назад", root_path
+
         - if user_signed_in? && current_user.id == @recipe.user.id
-          = link_to "Редактировать", edit_recipe_path(@recipe)
-          = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }
-        %br/
+          .pull-right
+            = link_to "Редактировать", edit_recipe_path(@recipe)
+            = link_to "Удалить", @recipe, method: :delete, data: { confirm: "Вы уверены?" }
+        %hr/
         #disqus_thread
 :javascript
   var disqus_identifier = "recipe_#{@recipe.id}";
