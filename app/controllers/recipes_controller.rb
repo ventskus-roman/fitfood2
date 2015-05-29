@@ -4,7 +4,11 @@ class RecipesController < ApplicationController
   autocomplete :product, :name, :extra_data => [:proteins, :carbs, :fat]
 
   def index
+    if params[:tag]
+    @recipes = Recipe.tagged_with(params[:tag]).paginate(:page => params[:page], per_page: 5).order("created_at DESC")
+  else
     @recipes = Recipe.paginate(:page => params[:page], per_page: 5).order("created_at DESC")
+  end
   end
 
   def show
@@ -55,7 +59,10 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :proteins, :carbs, :fat, :description, :image, :has_ingredients)
+    params.require(:recipe).permit(:name, :proteins, :carbs, :fat, :description, :image, :has_ingredients, :tag_list)
+  end
+
+  def tags
   end
 
 end

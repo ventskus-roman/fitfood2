@@ -65,19 +65,25 @@
   text-align: center;
 }
 
-.recipe {
-  .title {
-    text-align: center;
-    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
-    font-size: 3em;
-    a {
-      color: black;
-    }
+.title {
+  text-align: center;
+  font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+  a {
+    color: black;
   }
 }
 
 .pagination-box {
   text-align: center;
   font-size: 25px;
+}
+
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
 }

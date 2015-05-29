@@ -14,6 +14,7 @@ class Recipe < ActiveRecord::Base
   before_validation :recalc_calories, :clear_ingredients_if_need, on: [:create, :update, :save]
   has_reputation :votes, source: :user
   slice :description, :as => :shorten, :slice => {:maximum => 300,:complete => /\n|\./}
+  acts_as_taggable
 
   def recalc_calories
     if has_ingredients && ingredients && ingredients.length > 0

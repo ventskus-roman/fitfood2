@@ -35,6 +35,8 @@
                 %li
                   = link_to "Лента", user_news_path(current_user)
                 %li
+                  = link_to "Тэги", tags_recipes_path
+                %li
                   = link_to "Добавить рецепт", new_recipe_path
             %p.navbar-text.pull-right
               - if user_signed_in?

@@ -33,3 +33,4 @@ gem 'activerecord-reputation-system'
 gem 'will_paginate', '~> 3.0.6'
 gem 'html_slicer'
 gem 'html-scanner', :github => 'addagger/html-scanner' # (fork from Jakob Skjerning, 'koppen/html-scanner')
+gem 'acts-as-taggable-on'

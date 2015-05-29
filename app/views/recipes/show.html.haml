@@ -24,6 +24,8 @@
             = render @recipe.ingredients
             %br/
         %p= pluralize @recipe.reputation_for(:votes).to_i, "vote"
+        %p Tags:
+        %p= raw @recipe.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
         = link_to "Нравится", vote_recipe_path(@recipe, type: "up"), method: "post"
         = link_to "Не нравится", vote_recipe_path(@recipe, type: "down"), method: "post"
         %br/
